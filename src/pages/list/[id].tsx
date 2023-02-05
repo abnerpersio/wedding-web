@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
-
-import { Container } from './styles';
+import { Container } from '~/styles/list';
 
 export default function List() {
   const { query } = useRouter();
