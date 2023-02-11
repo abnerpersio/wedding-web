@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+
 import { defaultTheme } from './theme';
 
 export const GlobalStyles = createGlobalStyle`
@@ -6,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    font-family: ${defaultTheme.fonts.default};
   }
 
   html, body {
@@ -15,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${defaultTheme.pallete.light}
+    background-color: ${defaultTheme.colors.light}
   }
 
   #__next {
@@ -25,9 +26,5 @@ export const GlobalStyles = createGlobalStyle`
 
   input, button, a {
     outline: none;
-  }
-
-  .font-ephesis {
-    font-family: 'Ephesis', cursive;
   }
 `;

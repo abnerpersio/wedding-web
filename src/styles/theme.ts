@@ -1,5 +1,5 @@
 export const defaultTheme = {
-  pallete: {
+  colors: {
     main: {
       700: '#46156b',
       500: '#7726B3',
@@ -23,9 +23,16 @@ export const defaultTheme = {
     },
     dark: '#1a1a1a',
     light: '#fafafa',
+    disabled: '#d3d3d3',
   },
   shadows: {
     default: '0px 0px 10px rgba(0, 0, 0, 0.3)',
+    medium: '0px 0px 4px rgba(0, 0, 0, 0.15)',
+    light: '0px 0px 4px rgba(0, 0, 0, 0.1)',
+  },
+  fonts: {
+    default: "'Lato', sans-serif",
+    handwrite: "'Ephesis', cursive",
   },
 };
 
