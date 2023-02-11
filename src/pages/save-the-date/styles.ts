@@ -61,19 +61,6 @@ export const Wrapper = styled.div`
       font-family: ${({ theme }) => theme.fonts.handwrite};
     }
 
-    a {
-      text-transform: lowercase;
-      font-size: 0.8em;
-      margin-top: 4px;
-      color: ${({ theme }) => theme.colors.secondary[700]};
-      text-decoration: none;
-      transition: 0.3s ease-in-out;
-
-      &:hover {
-        color: ${({ theme }) => theme.colors.secondary[500]};
-      }
-    }
-
     @media screen and (max-width: 320px) {
       h1 {
         font-size: 2em;
