@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import background from '~/assets/background.jpg';
 
 export const Wrapper = styled.div`
   position: relative;
-  background-image: url('/assets/background.jpg');
+  background-image: url(${background});
   background-position: center;
   background-size: cover;
   width: 100%;

@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router';
-import { Banner } from '~/components/Banner';
-import { Button } from '~/components/Button';
-import { Input } from '~/components/Input';
-import { Content, Wrapper } from '~/styles/list';
+import { useParams } from 'react-router-dom';
+import { Banner } from '~/components/banner';
+import { Button } from '~/components/button';
+import { Input } from '~/components/input';
 
-export default function List() {
-  const { query } = useRouter();
-  const { id } = query;
+import { Content, Wrapper } from '../styles';
+
+export function InviteConfirm() {
+  const { id } = useParams();
 
   console.log(id);
 
