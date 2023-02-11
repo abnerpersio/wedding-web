@@ -4,6 +4,14 @@ import { InviteConfirm } from '~/pages/invite/confirm';
 
 const router = createBrowserRouter([
   {
+    path: '/',
+    element: 'Everything is OK',
+  },
+  {
+    path: '/health',
+    element: 'Everything is OK',
+  },
+  {
     path: '/invite/:id',
     children: [
       {
