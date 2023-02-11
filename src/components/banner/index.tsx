@@ -10,7 +10,7 @@ export function Banner(props: Props) {
       <div className="overlay" />
 
       <div className="title">
-        <h1 className="font-ephesis">Abner & Mayara</h1>
+        <h1>Abner & Mayara</h1>
         {props.title && <h4>{props.title}</h4>}
       </div>
     </Wrapper>

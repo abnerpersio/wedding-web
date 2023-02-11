@@ -31,7 +31,9 @@ export const defaultTheme = {
     light: '0px 0px 4px rgba(0, 0, 0, 0.1)',
   },
   fonts: {
-    default: "'Lato', sans-serif",
+    default: "'ABeeZee', sans-serif",
+    abeezee: "'ABeeZee', sans-serif",
+    lato: "'Lato', sans-serif",
     handwrite: "'Ephesis', cursive",
   },
 };

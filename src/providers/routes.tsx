@@ -1,28 +1,29 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Invite } from '~/pages/invite';
 import { InviteConfirm } from '~/pages/invite/confirm';
+import { SaveTheDate } from '~/pages/save-the-date';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: 'Everything is OK',
-  },
-  {
-    path: '/health',
-    element: 'Everything is OK',
+    element: <h2>Everything is OK!</h2>,
   },
   {
     path: '/invite/:id',
     children: [
       {
-        element: <Invite />,
         index: true,
+        element: <Invite />,
       },
       {
-        element: <InviteConfirm />,
         path: 'confirm',
+        element: <InviteConfirm />,
       },
     ],
+  },
+  {
+    path: '/save-the-date',
+    element: <SaveTheDate />,
   },
 ]);
 

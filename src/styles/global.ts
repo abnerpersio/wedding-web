@@ -19,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${defaultTheme.colors.light}
   }
 
-  #__next {
+  #root {
     width: 100%;
     height: 100%;
   }
