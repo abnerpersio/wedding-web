@@ -36,7 +36,7 @@ export const Spinner = styled.div<SpinnerProps>`
     width: ${(props) => props.size}px;
     height: ${(props) => props.size * 0.9}px;
     opacity: 0.6;
-    -webkit-animation: ${beatAnimation} 3s infinite ease-in-out;
+    animation: ${beatAnimation} 3s infinite ease-in-out;
 
     &:before,
     &:after {
