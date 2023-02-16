@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { Banner } from '~/components/banner';
+import backgroundBlur from '~/assets/background-blur.png';
 import { Loader } from '~/components/loader';
+import { Title } from '~/components/title';
 
 import { Content, Wrapper } from './styles';
 
@@ -13,10 +14,11 @@ export function Invite() {
     <Wrapper>
       <Loader isLoading={false} />
 
-      <Banner />
+      <img src={backgroundBlur} alt="" className="background-decoration" />
 
       <Content>
-        <h2>Abner e família</h2>
+        <Title text="Abner & Mayara" withAnimation />
+        <h4>Convidam você para participar de sua cerimônia de casamento</h4>
       </Content>
     </Wrapper>
   );
