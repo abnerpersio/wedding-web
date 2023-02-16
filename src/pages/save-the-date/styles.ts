@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { blinkAnimation, scaleAnimation, typingAnimation } from './animations';
+import { blinkAnimation, typingAnimation } from '~/styles/animations';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -12,6 +11,7 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary[100]};
 
   img.background-decoration {
+    z-index: 10;
     position: absolute;
     pointer-events: none;
 
@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.main`
+  z-index: 20;
   display: flex;
   gap: 4px;
   flex-direction: column;
@@ -50,15 +51,11 @@ export const Content = styled.main`
 
   h1 {
     margin: 16px 0;
-    font-weight: normal;
-    font-size: 2.7em;
-    font-family: ${({ theme }) => theme.fonts.handwrite};
-    color: ${({ theme }) => theme.colors.secondary[700]};
-    animation: ${scaleAnimation} 0.3s ease-in-out;
   }
 
   h3 {
-    font-size: 1em;
+    font-size: 1.3em;
+    font-family: ${({ theme }) => theme.fonts.handwrite};
     font-weight: normal;
     text-transform: lowercase;
   }
@@ -68,25 +65,9 @@ export const Content = styled.main`
     font-family: ${({ theme }) => theme.fonts.handwrite};
   }
 
-  @media screen and (max-width: 320px) {
-    h1 {
-      font-size: 2em;
-    }
-  }
-
-  @media screen and (max-width: 375px) {
-    h1 {
-      margin: 8px 0;
-    }
-  }
-
   @media screen and (min-width: 1440px) {
     h2 {
       font-size: 1.5em;
-    }
-
-    h1 {
-      font-size: 3.25em;
     }
 
     h3 {
