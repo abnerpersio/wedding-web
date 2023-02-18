@@ -65,6 +65,10 @@ export const Content = styled.main`
     font-family: ${({ theme }) => theme.fonts.handwrite};
   }
 
+  button {
+    margin-top: 20px;
+  }
+
   @media screen and (min-width: 1440px) {
     h2 {
       font-size: 1.5em;
