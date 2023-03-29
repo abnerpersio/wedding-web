@@ -21,8 +21,8 @@ export const defaultTheme = {
       300: '#474DFB',
       100: '#b3b7ff',
     },
-    dark: '#1a1a1a',
-    light: '#fafafa',
+    black: '#1a1a1a',
+    white: '#fafafa',
     disabled: '#d3d3d3',
   },
   shadows: {

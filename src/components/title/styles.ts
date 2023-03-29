@@ -7,7 +7,8 @@ export type StyleProps = {
 
 export const StyledTitle = styled.h1<StyleProps>`
   font-weight: normal;
-  font-size: 2.7em;
+  text-align: center;
+  font-size: 2.8em;
   font-family: ${({ theme }) => theme.fonts.handwrite};
   color: ${({ theme }) => theme.colors.secondary[700]};
 
@@ -17,8 +18,8 @@ export const StyledTitle = styled.h1<StyleProps>`
       animation: ${scaleAnimation} 0.3s ease-in-out;
     `}
 
-  @media screen and (max-width: 320px) {
-    font-size: 2em;
+  @media screen and (max-width: 330px) {
+    font-size: 2.5em;
   }
 
   @media screen and (min-width: 1440px) {

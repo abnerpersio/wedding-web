@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
   background: none;
   background-color: ${({ theme }) => theme.colors.secondary[500]};
   border: 1px solid ${({ theme }) => theme.colors.secondary[400]};
-  color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   border-radius: 4px;
   padding: 8px 16px;
@@ -17,7 +17,7 @@ export const StyledButton = styled.button`
     cursor: default;
     background-color: ${({ theme }) => theme.colors.disabled} !important;
     border-color: ${({ theme }) => theme.colors.disabled} !important;
-    color: ${({ theme }) => theme.colors.dark} !important;
+    color: ${({ theme }) => theme.colors.black} !important;
     opacity: 0.5;
   }
 

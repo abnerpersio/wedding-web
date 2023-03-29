@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${defaultTheme.colors.light}
+    background-color: ${defaultTheme.colors.white}
   }
 
   #root {

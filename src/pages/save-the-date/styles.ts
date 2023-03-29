@@ -1,33 +1,14 @@
 import styled from 'styled-components';
 import { blinkAnimation, typingAnimation } from '~/styles/animations';
 
-export const Wrapper = styled.div`
+export const ImageDecoration = styled.img`
+  z-index: 10;
+  position: absolute;
+  pointer-events: none;
+  padding: 4px;
+  opacity: 0.5;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.secondary[100]};
-
-  img.background-decoration {
-    z-index: 10;
-    position: absolute;
-    pointer-events: none;
-
-    &.round {
-      padding: 4px;
-      opacity: 0.5;
-      width: 100%;
-      max-width: 650px;
-    }
-
-    &.blur {
-      opacity: 0.5;
-      width: 40%;
-      max-width: 250px;
-    }
-  }
+  max-width: 650px;
 `;
 
 export const Content = styled.main`

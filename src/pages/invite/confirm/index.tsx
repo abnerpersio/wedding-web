@@ -1,33 +1,39 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Banner } from '~/components/banner';
 import { Button } from '~/components/button';
 import { Input } from '~/components/input';
+import { Page } from '~/components/page';
 
-import { Content, Wrapper } from '../styles';
+import { Content } from './styles';
 
 export function InviteConfirm() {
   const { id } = useParams();
+  const [guests, setGuests] = useState<number>(0);
 
   console.log(id);
 
-  return (
-    <Wrapper>
-      <Banner title="Confirmação de presença" />
+  const handleChangeGuests = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value);
+    // TODO: validate number of guests. Should be less then 20
+    setGuests(value);
+  };
 
+  return (
+    <Page isLoading={false}>
       <Content>
         <h2>Olá, Abner!</h2>
 
-        <div className="flex">
-          <span>Número de acompanhantes</span>
-          <span>2</span>
+        <div className="input-group">
+          <p>Número de acompanhantes</p>
+          <p>2</p>
+          <small>Alterar</small>
         </div>
 
-        <span>Alterar</span>
-        <Input value={2} type="number" />
+        <Input max={20} value={guests} onChange={handleChangeGuests} type="number" />
 
         <Button type="submit">Confirmar presença</Button>
-        <small>Você poderá atualizar as informações depois</small>
+        <small>Você poderá atualizar essas informações depois</small>
       </Content>
-    </Wrapper>
+    </Page>
   );
 }

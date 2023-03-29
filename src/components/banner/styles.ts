@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.white};
     gap: 8px;
 
     h1 {

@@ -1,28 +1,9 @@
 import styled from 'styled-components';
-import { scaleAnimation } from '~/styles/animations';
-
-export const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.secondary[100]};
-
-  img.background-decoration {
-    z-index: 10;
-    position: absolute;
-    pointer-events: none;
-    opacity: 0.5;
-    width: 40%;
-    max-width: 250px;
-  }
-`;
 
 export const Content = styled.main`
-  z-index: 20;
+  z-index: 30;
   width: 100%;
+  max-width: 600px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -32,12 +13,103 @@ export const Content = styled.main`
 
   h1 {
     margin: 16px 0;
+    text-align: center;
   }
 
   h4 {
     font-weight: normal;
     text-align: center;
-    max-width: 300px;
+    max-width: 280px;
+    font-size: 1em;
     word-break: break-word;
+
+    @media screen and (max-width: 320px) {
+      font-size: 0.9em;
+    }
+  }
+
+  div.date-info {
+    position: relative;
+    margin-top: 8px;
+    width: 80%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 4px;
+
+    @media screen and (max-width: 420px) {
+      width: 90%;
+    }
+
+    small {
+      overflow: hidden;
+      text-align: center;
+      width: 100%;
+      font-size: 0.8em;
+
+      &:before,
+      &:after {
+        background-color: ${({ theme }) => theme.colors.main[300]};
+        content: '';
+        display: inline-block;
+        height: 2px;
+        opacity: 0.5;
+        position: relative;
+        vertical-align: middle;
+        width: 50%;
+      }
+
+      &:before {
+        right: 0.5em;
+        margin-left: -50%;
+      }
+
+      &:after {
+        left: 0.5em;
+        margin-right: -50%;
+      }
+    }
+
+    div {
+      margin: 16px 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-size: 1em;
+
+      svg {
+        width: 12px;
+        height: 12px;
+        fill: ${({ theme }) => theme.colors.black};
+        opacity: 0.8;
+      }
+    }
+
+    section.border-bottom {
+      background-color: ${({ theme }) => theme.colors.main[300]};
+      height: 2px;
+      opacity: 0.5;
+      width: 100%;
+    }
+  }
+
+  a {
+    margin: 16px 0px;
+    color: ${({ theme }) => theme.colors.main[500]};
+    font-size: 0.85em;
+    transition: all 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.main[300]};
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 0.75em;
+    }
   }
 `;
