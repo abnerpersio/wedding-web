@@ -19,6 +19,7 @@
       "~/assets/*": ["./src/assets/*"],
       "~/styles/*": ["./src/styles/*"],
       "~/components/*": ["./src/components/*"],
+      "~/constants/*": ["./src/constants/*"],
       "~/pages/*": ["./src/pages/*"],
       "~/providers/*": ["./src/providers/*"],
       "~/utils/*": ["./src/utils/*"],
