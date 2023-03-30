@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 export const Content = styled.main`
+  z-index: 30;
+  width: 90%;
+  max-width: 500px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
   gap: 8px;
 
   & > * {
@@ -59,6 +65,10 @@ export const InfoModalContent = styled.div`
   flex-direction: column;
   gap: 32px;
   opacity: 0.8;
-  color: ${({ theme }) => theme.colors.black};
-  font-size: 1em;
+
+  p {
+    color: ${({ theme }) => theme.colors.black};
+    font-size: 1em;
+    line-height: 1.4em;
+  }
 `;
