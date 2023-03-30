@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Button } from '~/components/button';
 import { GoBackIcon } from '~/components/icons/go-back';
 import { Input } from '~/components/input';
+import { TextArea } from '~/components/input/textarea';
 import { Modal } from '~/components/modal';
 import { Page } from '~/components/page';
 
@@ -21,14 +22,14 @@ export function InviteConfirm() {
     setGuests(value);
   };
 
-  const handleOpenModal = () => setModalOpen(true);
+  // const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
   return (
     <Page isLoading={false}>
       <Modal modalId="invite-confirm-info" isOpen={modalOpen} onClose={handleCloseModal}>
         <InfoModalContent>
-          <p>Cada convidado (junto de seus acompanhantes) tem seu próprio link.</p>
+          <p>Cada convite tem seu próprio link.</p>
 
           <p>
             Se houve um engano com o nome escrito nesse formulário, não o preencha. Entre em contato
@@ -43,17 +44,18 @@ export function InviteConfirm() {
         <div className="actions">
           <GoBackIcon />
           <Link to={`/invite/${id}`}>Voltar</Link>
-          <small>|</small>
-          <span onClick={handleOpenModal}>Não sou Abner</span>
+          {/* <small>|</small>
+          <span onClick={handleOpenModal}>Não sou Abner</span> */}
         </div>
 
         <div className="input-group">
           <p>Número de acompanhantes</p>
           <p>2</p>
-          <small>Alterar</small>
         </div>
-
+        <small>Alterar</small>
         <Input max={20} value={guests} onChange={handleChangeGuests} type="number" />
+
+        <TextArea cols={10} rows={3} maxLength={200} label="Alguma observação?" />
 
         <Button type="submit">Confirmar presença</Button>
         <small>Você poderá atualizar essas informações depois</small>
