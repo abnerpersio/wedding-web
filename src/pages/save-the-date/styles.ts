@@ -6,7 +6,7 @@ export const ImageDecoration = styled.img`
   position: absolute;
   pointer-events: none;
   padding: 4px;
-  opacity: 0.5;
+  opacity: 0.4;
   width: 100%;
   max-width: 650px;
 `;
