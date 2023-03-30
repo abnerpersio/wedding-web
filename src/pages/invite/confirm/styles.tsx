@@ -19,6 +19,8 @@ export const Content = styled.main`
   h2 {
     text-align: left;
     font-size: 1.75em;
+    font-weight: normal;
+    color: ${({ theme }) => theme.colors.main[500]};
   }
 
   div.actions {

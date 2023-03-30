@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const StyledButton = styled.button`
   border: none;
   background: none;
-  background-color: ${({ theme }) => theme.colors.secondary[500]};
-  border: 1px solid ${({ theme }) => theme.colors.secondary[400]};
+  background-color: ${({ theme }) => theme.colors.main[500]};
+  border: 1px solid ${({ theme }) => theme.colors.main[400]};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   border-radius: 4px;
@@ -22,7 +22,7 @@ export const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary[400]};
-    border-color: ${({ theme }) => theme.colors.secondary[300]};
+    background-color: ${({ theme }) => theme.colors.main[400]};
+    border-color: ${({ theme }) => theme.colors.main[300]};
   }
 `;
