@@ -39,7 +39,7 @@ export function InviteConfirm() {
       </Modal>
 
       <Content>
-        <h2>Olá, Abner!</h2>
+        <h2>Abner e família</h2>
 
         <div className="actions">
           <GoBackIcon />
