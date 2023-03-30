@@ -1,14 +1,12 @@
 import { InputGroup, StyledInput } from './styles';
 
-type Props = {
+type Props = React.InputHTMLAttributes<unknown> & {
   label?: string;
   value?: string | number;
-} & React.InputHTMLAttributes<unknown>;
+};
 
 export function Input(props: Props) {
-  const { type, onChange, value, label } = props;
-
-  const inputProps = { onChange, value, type };
+  const { label, ...inputProps } = props;
 
   if (label) {
     return (
