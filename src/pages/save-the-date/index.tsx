@@ -17,7 +17,6 @@ export function SaveTheDate() {
 
       <Content>
         <h2>Save the date</h2>
-        <h3>nosso casamento</h3>
         <Title text="Abner & Mayara" withAnimation />
         <h4>07 . 09 . 2023</h4>
         <h4>16 : 30</h4>

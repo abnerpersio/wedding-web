@@ -27,21 +27,14 @@ export const Content = styled.main`
     font-weight: normal;
     overflow: hidden;
     white-space: nowrap;
-    font-size: 1.1em;
-    text-transform: uppercase;
+    font-size: 1.65em;
+    font-family: ${({ theme }) => theme.fonts.handwrite};
     animation: ${typingAnimation} 3.5s steps(40, end), ${blinkAnimation} 0.75s step-end;
   }
 
   h1 {
     margin: 16px 0;
     font-size: 2.75em;
-  }
-
-  h3 {
-    font-size: 1.5em;
-    font-family: ${({ theme }) => theme.fonts.handwrite};
-    font-weight: normal;
-    text-transform: lowercase;
   }
 
   h4 {
@@ -56,25 +49,7 @@ export const Content = styled.main`
 
   @media screen and (min-width: 1440px) {
     h2 {
-      font-size: 1.5em;
-    }
-
-    h3 {
-      font-size: 1.2em;
-    }
-
-    h4 {
-      font-size: 1.5em;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    h2 {
-      font-size: 1.25em;
-    }
-
-    h3 {
-      font-size: 1.75em;
+      font-size: 1.8em;
     }
 
     h1 {
