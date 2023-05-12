@@ -13,7 +13,7 @@ export function SaveTheDate() {
 
   return (
     <Page>
-      <ImageDecoration src={backgroundRound} />
+      <ImageDecoration src={backgroundRound} opacity={0.2} />
 
       <Content>
         <h2>Save the date</h2>
