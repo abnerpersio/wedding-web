@@ -73,7 +73,7 @@ export const Content = styled.main`
     }
 
     h3 {
-      font-size: 1.2em;
+      font-size: 1.75em;
     }
 
     h4 {
