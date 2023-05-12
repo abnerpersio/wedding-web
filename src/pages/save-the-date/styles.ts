@@ -24,8 +24,6 @@ export const Content = styled.main`
     white-space: nowrap;
     font-size: 1.25em;
     font-weight: 500;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.75px;
     text-transform: uppercase;
     animation: ${typingAnimation} 3.5s steps(40, end), ${blinkAnimation} 0.75s step-end;
   }

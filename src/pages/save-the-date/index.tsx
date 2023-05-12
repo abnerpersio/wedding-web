@@ -16,7 +16,7 @@ export function SaveTheDate() {
       <ImageDecoration src={backgroundRound} />
 
       <Content>
-        <h2>Save the Date</h2>
+        <h2>Save the date</h2>
         <h3>nosso casamento</h3>
         <Title text="Abner & Mayara" withAnimation />
         <h4>07 . 09 . 2023</h4>
