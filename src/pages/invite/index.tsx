@@ -1,8 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
+import backgroundRound from '~/assets/background-round.png';
 import { HeartIcon } from '~/components/icons/heart';
 import { Page } from '~/components/page';
 import { Title } from '~/components/title';
 
+import { ImageDecoration } from '../save-the-date/styles';
 import { Content } from './styles';
 
 export function Invite() {
@@ -12,6 +14,8 @@ export function Invite() {
 
   return (
     <Page isLoading={false}>
+      <ImageDecoration src={backgroundRound} opacity={0.2} />
+
       <Content>
         <Title text="Abner & Mayara" withAnimation />
 

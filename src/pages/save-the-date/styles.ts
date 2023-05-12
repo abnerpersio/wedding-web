@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 import { blinkAnimation, typingAnimation } from '~/styles/animations';
 
-export const ImageDecoration = styled.img`
+type Props = {
+  opacity?: number;
+};
+
+export const ImageDecoration = styled.img<Props>`
   z-index: 10;
   position: absolute;
   pointer-events: none;
   padding: 4px;
-  opacity: 0.4;
+  opacity: ${({ opacity }) => opacity || 0.4};
   width: 100%;
   max-width: 650px;
 `;
@@ -22,7 +26,7 @@ export const Content = styled.main`
   h2 {
     overflow: hidden;
     white-space: nowrap;
-    font-size: 1.25em;
+    font-size: 1.3em;
     font-weight: 500;
     text-transform: uppercase;
     animation: ${typingAnimation} 3.5s steps(40, end), ${blinkAnimation} 0.75s step-end;
@@ -30,10 +34,11 @@ export const Content = styled.main`
 
   h1 {
     margin: 16px 0;
+    font-size: 3em;
   }
 
   h3 {
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-family: ${({ theme }) => theme.fonts.handwrite};
     font-weight: normal;
     text-transform: lowercase;
@@ -46,6 +51,20 @@ export const Content = styled.main`
 
   button {
     margin-top: 20px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    h2 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1.2em;
+    }
+
+    h4 {
+      font-size: 1.5em;
+    }
   }
 
   @media screen and (min-width: 1440px) {
