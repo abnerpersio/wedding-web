@@ -1,10 +1,10 @@
-import backgroundRound from '~/assets/background-round.png';
 import { Button } from '~/components/button';
+import { ImageDecoration } from '~/components/image-decoration';
 import { Page } from '~/components/page';
 import { Title } from '~/components/title';
 import { LINKS } from '~/constants/links';
 
-import { Content, ImageDecoration } from './styles';
+import { Content } from './styles';
 
 export function SaveTheDate() {
   const goToGiftList = () => {
@@ -13,7 +13,7 @@ export function SaveTheDate() {
 
   return (
     <Page>
-      <ImageDecoration src={backgroundRound} opacity={0.2} />
+      <ImageDecoration opacity={0.2} />
 
       <Content>
         <h2>Save the date</h2>

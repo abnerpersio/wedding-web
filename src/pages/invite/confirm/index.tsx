@@ -1,63 +1,159 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Button } from '~/components/button';
 import { GoBackIcon } from '~/components/icons/go-back';
-import { Input } from '~/components/input';
 import { TextArea } from '~/components/input/textarea';
+import { Loader } from '~/components/loader';
 import { Modal } from '~/components/modal';
 import { Page } from '~/components/page';
+import { PageError } from '~/components/page-error';
+import { useInvite } from '~/hooks/useInvite';
+import { InviteService } from '~/services/invite/invite-service';
 
-import { Content, InfoModalContent } from './styles';
+import { Content, ModalContent } from './styles';
 
 export function InviteConfirm() {
   const { id } = useParams();
-  const [guests, setGuests] = useState<number>(0);
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
+  const [refuseModalOpen, setRefuseModalOpen] = useState<boolean>(false);
+  const [isRefusing, setIsRefusing] = useState<boolean>(false);
+  const [isConfirming, setIsConfirming] = useState<boolean>(false);
+  const [comments, setComments] = useState<string>('');
+  const { isLoading, isError, invite } = useInvite(id);
 
-  console.log(id);
+  const handleOpenInfoModal = () => setInfoModalOpen(true);
+  const handleCloseInfoModal = () => setInfoModalOpen(false);
 
-  const handleChangeGuests = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
-    // TODO: validate number of guests. Should be less then 20
-    setGuests(value);
-  };
+  const handleOpenRefuseModal = () => setRefuseModalOpen(true);
+  const handleCloseRefuseModal = () => setRefuseModalOpen(false);
 
-  // const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
+  const handleRefuseInvite = useCallback(async () => {
+    if (!id || !invite) return;
+    if (isRefusing) return;
+
+    try {
+      setIsRefusing(true);
+      await InviteService.update(id, { status: 'refused' });
+      setIsRefusing(false);
+      handleCloseRefuseModal();
+      toast.success('Convite atualizado');
+    } catch {
+      toast.error('Ocorreu um erro ao atualizar. Tente novamente');
+    } finally {
+      setIsRefusing(false);
+    }
+  }, [id, invite, isRefusing]);
+
+  const handleConfirmInvite = useCallback(async () => {
+    if (!id || !invite) return;
+    if (isConfirming) return;
+
+    try {
+      setIsConfirming(true);
+      await InviteService.update(id, {
+        comments: comments || '',
+        status: 'confirmed',
+      });
+      setIsConfirming(false);
+      handleCloseRefuseModal();
+      toast.success('Convite confirmado!');
+    } catch {
+      toast.error('Ocorreu um erro ao atualizar. Tente novamente');
+    } finally {
+      setIsConfirming(false);
+    }
+  }, [id, invite, isConfirming, comments]);
+
+  useEffect(() => {
+    if (invite?.comments) {
+      setComments(invite.comments);
+    }
+  }, [invite?.comments]);
+
+  if (isLoading) {
+    return <Loader isLoading />;
+  }
+
+  const guest = invite?.guest;
+  const hasError = isError || !invite || !guest;
+
+  if (hasError) {
+    return (
+      <PageError message="Link de convite não encontrado. Verifique se está tudo certo ou tente novamente mais tarde." />
+    );
+  }
 
   return (
     <Page isLoading={false}>
-      <Modal modalId="invite-confirm-info" isOpen={modalOpen} onClose={handleCloseModal}>
-        <InfoModalContent>
+      <Modal modalId="invite-confirm-info" isOpen={infoModalOpen} onClose={handleCloseInfoModal}>
+        <ModalContent>
           <p>Cada convite tem seu próprio link.</p>
 
           <p>
             Se houve um engano com o nome escrito nesse formulário, não o preencha. Entre em contato
             com quem te enviou para receber o seu link personalizado
           </p>
-        </InfoModalContent>
+        </ModalContent>
+      </Modal>
+
+      <Modal
+        modalId="invite-refuse"
+        isOpen={refuseModalOpen}
+        onClose={!isRefusing ? handleCloseRefuseModal : undefined}
+      >
+        <ModalContent gap={16}>
+          <h4>Confirmar cancelamento</h4>
+          <p>Ficamos tristes que não poderá estar no dia mais importante de nossas vidas :(</p>
+          <p>Mas entendemos que faz parte e agradeçemos pelo carinho!</p>
+          <Button type="button" disabled={isRefusing} onClick={handleRefuseInvite}>
+            {isRefusing ? 'Cancelando...' : 'Tenho certeza dessa decisão, cancelar'}
+          </Button>
+        </ModalContent>
       </Modal>
 
       <Content>
-        <h2>Abner e família</h2>
+        <h2>
+          {guest.name}
+          {invite.companions > 0 && ' e família'}
+        </h2>
 
         <div className="actions">
           <GoBackIcon />
           <Link to={`/invite/${id}`}>Voltar</Link>
-          {/* <small>|</small>
-          <span onClick={handleOpenModal}>Não sou Abner</span> */}
+          <small>|</small>
+          <span onClick={handleOpenInfoModal}>Convite errado?</span>
         </div>
 
-        <div className="input-group">
+        <div className="info-group">
           <p>Número de acompanhantes</p>
-          <p>2</p>
+          <p>{invite.companions}</p>
         </div>
-        <small>Alterar</small>
-        <Input max={20} value={guests} onChange={handleChangeGuests} type="number" />
 
-        <TextArea cols={10} rows={3} maxLength={200} label="Alguma observação?" />
+        <TextArea
+          value={comments}
+          onChange={(value) => setComments(value as string)}
+          cols={10}
+          rows={3}
+          maxLength={200}
+          label="Alguma observação? (opcional)"
+        />
 
-        <Button type="submit">Confirmar presença</Button>
+        <div className="form-actions">
+          <Button
+            disabled={isConfirming || isRefusing}
+            onClick={handleOpenRefuseModal}
+            variant="outlined"
+            type="button"
+          >
+            Não poderei comparecer
+          </Button>
+
+          <Button disabled={isConfirming || isRefusing} onClick={handleConfirmInvite} type="button">
+            {isConfirming ? 'Confirmando...' : 'Confirmar presença'}
+          </Button>
+        </div>
+
         <small>Você poderá atualizar essas informações depois</small>
       </Content>
     </Page>

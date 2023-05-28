@@ -1,20 +1,34 @@
 import { Link, useParams } from 'react-router-dom';
-import backgroundRound from '~/assets/background-round.png';
 import { HeartIcon } from '~/components/icons/heart';
+import { ImageDecoration } from '~/components/image-decoration';
+import { Loader } from '~/components/loader';
 import { Page } from '~/components/page';
+import { PageError } from '~/components/page-error';
 import { Title } from '~/components/title';
+import { useInvite } from '~/hooks/useInvite';
 
-import { ImageDecoration } from '../save-the-date/styles';
 import { Content } from './styles';
 
 export function Invite() {
   const { id } = useParams();
+  const { isLoading, isError, invite } = useInvite(id);
 
-  console.log(id);
+  if (isLoading) {
+    return <Loader isLoading />;
+  }
+
+  const guest = invite?.guest;
+  const hasError = isError || !invite || !guest;
+
+  if (hasError) {
+    return (
+      <PageError message="Link de convite não encontrado. Verifique se está tudo certo ou tente novamente mais tarde." />
+    );
+  }
 
   return (
     <Page isLoading={false}>
-      <ImageDecoration src={backgroundRound} opacity={0.2} />
+      <ImageDecoration opacity={0.2} />
 
       <Content>
         <Title text="Abner & Mayara" withAnimation />

@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledButton = styled.button`
+type Props = {
+  variant?: 'outlined' | 'contained';
+};
+
+export const StyledButton = styled.button<Props>`
   border: none;
   background: none;
   background-color: ${({ theme }) => theme.colors.main[500]};
@@ -25,4 +29,18 @@ export const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.colors.main[400]};
     border-color: ${({ theme }) => theme.colors.main[300]};
   }
+
+  ${({ variant }) =>
+    variant === 'outlined' &&
+    css`
+      &,
+      &:hover {
+        background-color: transparent;
+        color: ${({ theme }) => theme.colors.main[400]};
+      }
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.main[300]};
+      }
+    `}
 `;

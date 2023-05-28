@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Content = styled.main`
   z-index: 30;
@@ -25,11 +25,11 @@ export const Content = styled.main`
 
   div.actions {
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 4px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 4px;
+    gap: 16px;
     font-size: 0.85em;
     opacity: 0.8;
 
@@ -49,11 +49,23 @@ export const Content = styled.main`
     }
   }
 
-  div.input-group {
+  div.info-group {
     width: 100%;
     justify-content: space-between;
     align-items: center;
     display: flex;
+    margin: 8px 0px;
+  }
+
+  div.form-actions {
+    margin: 8px 0px 4px 0px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    & > * {
+      flex: 1;
+    }
   }
 
   small {
@@ -61,12 +73,14 @@ export const Content = styled.main`
   }
 `;
 
-export const InfoModalContent = styled.div`
+export const ModalContent = styled.div<{ gap?: number; align?: 'center' }>`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: ${({ gap }) => `${gap || 32}px`};
+  padding: 8px 4px;
   opacity: 0.8;
+  text-align: ${({ align }) => align || 'left'};
 
   p {
     color: ${({ theme }) => theme.colors.black};

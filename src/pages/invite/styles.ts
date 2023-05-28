@@ -99,7 +99,7 @@ export const Content = styled.main`
   a {
     margin: 16px 0px;
     color: ${({ theme }) => theme.colors.main[500]};
-    font-size: 0.85em;
+    font-size: 0.95em;
     transition: all 0.3s;
     text-decoration: none;
     cursor: pointer;

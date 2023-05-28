@@ -1,14 +1,12 @@
-import { useMemo } from 'react';
-import { randomString } from '~/utils/string';
+import { CloseIcon } from '~/components/icons/close';
+import { ReactPortal } from '~/components/react-portal';
 
-import { CloseIcon } from '../icons/close';
-import { ReactPortal } from '../react-portal';
 import { Content, Overlay } from './styles';
 
 type Props = {
   modalId: string;
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: React.ReactNode;
 };
 
