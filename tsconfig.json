@@ -20,8 +20,10 @@
       "~/styles/*": ["./src/styles/*"],
       "~/components/*": ["./src/components/*"],
       "~/constants/*": ["./src/constants/*"],
+      "~/services/*": ["./src/services/*"],
       "~/pages/*": ["./src/pages/*"],
       "~/providers/*": ["./src/providers/*"],
+      "~/hooks/*": ["./src/hooks/*"],
       "~/utils/*": ["./src/utils/*"],
     }
   },
