@@ -7,6 +7,7 @@ export function useInvite(id: string | undefined) {
     isLoading,
     isError,
     data: invite = null,
+    refetch
   } = useQuery({
     queryKey: ['get-invite', id],
     queryFn: () => InviteService.find(id!),
@@ -15,5 +16,5 @@ export function useInvite(id: string | undefined) {
     staleTime: 2 * 60 * 1000,
   });
 
-  return { isLoading, isError, invite };
+  return { isLoading, isError, invite, refetch };
 }

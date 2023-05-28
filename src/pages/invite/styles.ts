@@ -96,6 +96,14 @@ export const Content = styled.main`
     }
   }
 
+  section.bottom-informations {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
   a {
     margin: 16px 0px;
     color: ${({ theme }) => theme.colors.main[500]};
@@ -110,6 +118,43 @@ export const Content = styled.main`
 
     @media screen and (max-width: 320px) {
       font-size: 0.75em;
+    }
+  }
+`;
+
+export const ModalContent = styled.div`
+  padding: 12px 4px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+
+  div {
+    margin-top: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    & > button {
+      outline: none;
+      border: none;
+      background: none;
+      border: 2px solid ${({ theme }) => theme.colors.main[500]};
+      border-radius: 4px;
+      width: 120px;
+      height: 120px;
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      & > svg {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 `;

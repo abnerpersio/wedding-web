@@ -20,7 +20,8 @@ export function InviteConfirm() {
   const [isRefusing, setIsRefusing] = useState<boolean>(false);
   const [isConfirming, setIsConfirming] = useState<boolean>(false);
   const [comments, setComments] = useState<string>('');
-  const { isLoading, isError, invite } = useInvite(id);
+  const [mode, setMode] = useState<'update' | 'info'>('update');
+  const { isLoading, isError, invite, refetch: refetchInviteQuery } = useInvite(id);
 
   const handleOpenInfoModal = () => setInfoModalOpen(true);
   const handleCloseInfoModal = () => setInfoModalOpen(false);
@@ -38,6 +39,7 @@ export function InviteConfirm() {
       setIsRefusing(false);
       handleCloseRefuseModal();
       toast.success('Convite atualizado');
+      refetchInviteQuery();
     } catch {
       toast.error('Ocorreu um erro ao atualizar. Tente novamente');
     } finally {
@@ -56,8 +58,8 @@ export function InviteConfirm() {
         status: 'confirmed',
       });
       setIsConfirming(false);
-      handleCloseRefuseModal();
       toast.success('Convite confirmado!');
+      refetchInviteQuery();
     } catch {
       toast.error('Ocorreu um erro ao atualizar. Tente novamente');
     } finally {
@@ -70,6 +72,13 @@ export function InviteConfirm() {
       setComments(invite.comments);
     }
   }, [invite?.comments]);
+
+  useEffect(() => {
+    if (!invite?.status) return;
+    if (['confirmed', 'refused'].includes(invite.status)) {
+      setMode('info');
+    }
+  }, [invite?.status]);
 
   if (isLoading) {
     return <Loader isLoading />;
@@ -84,8 +93,37 @@ export function InviteConfirm() {
     );
   }
 
+  if (mode === 'info') {
+    return (
+      <Page>
+        <Content>
+          <h2>
+            {guest.name}
+            {invite.companions > 0 && ' e família'}
+          </h2>
+
+          <div className="actions">
+            <GoBackIcon />
+            <Link to={`/invite/${id}`}>Voltar</Link>
+          </div>
+
+          {invite.status === 'confirmed' && (
+            <p className="info-mode">Você já confirmou esse convite. Nos vemos no grande dia!</p>
+          )}
+          {invite.status === 'refused' && <p className="info-mode">Você já recusou esse convite</p>}
+
+          <div className="form-actions">
+            <Button onClick={() => setMode('update')} type="button" variant="outlined">
+              Atualizar informações
+            </Button>
+          </div>
+        </Content>
+      </Page>
+    );
+  }
+
   return (
-    <Page isLoading={false}>
+    <Page>
       <Modal modalId="invite-confirm-info" isOpen={infoModalOpen} onClose={handleCloseInfoModal}>
         <ModalContent>
           <p>Cada convite tem seu próprio link.</p>
@@ -100,7 +138,7 @@ export function InviteConfirm() {
       <Modal
         modalId="invite-refuse"
         isOpen={refuseModalOpen}
-        onClose={!isRefusing ? handleCloseRefuseModal : undefined}
+        onClose={isRefusing ? undefined : handleCloseRefuseModal}
       >
         <ModalContent gap={16}>
           <h4>Confirmar cancelamento</h4>

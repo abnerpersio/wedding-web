@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Content = styled.main`
   z-index: 30;
@@ -21,6 +21,10 @@ export const Content = styled.main`
     font-size: 1.75em;
     font-weight: normal;
     color: ${({ theme }) => theme.colors.main[500]};
+  }
+
+  .info-mode {
+    margin: 16px 0px;
   }
 
   div.actions {
