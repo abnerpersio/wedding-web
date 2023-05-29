@@ -95,7 +95,7 @@ export function InviteConfirm() {
 
   if (mode === 'info') {
     return (
-      <Page>
+      <Page backgroundVariant="photo">
         <Content>
           <h2>
             {guest.name}
@@ -123,7 +123,7 @@ export function InviteConfirm() {
   }
 
   return (
-    <Page>
+    <Page backgroundVariant="photo">
       <Modal modalId="invite-confirm-info" isOpen={infoModalOpen} onClose={handleCloseInfoModal}>
         <ModalContent>
           <p>Cada convite tem seu próprio link.</p>

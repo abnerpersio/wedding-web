@@ -17,4 +17,15 @@ export const Wrapper = styled.div`
     width: 40%;
     max-width: 250px;
   }
+
+  img.background-photo {
+    z-index: 10;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.15;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 `;

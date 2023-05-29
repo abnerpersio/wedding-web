@@ -12,8 +12,8 @@ export function SaveTheDate() {
   };
 
   return (
-    <Page>
-      <ImageDecoration opacity={0.2} />
+    <Page backgroundVariant="photo">
+      {/* <ImageDecoration opacity={0.2} /> */}
 
       <Content>
         <h2>Save the date</h2>
