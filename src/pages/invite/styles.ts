@@ -129,6 +129,21 @@ export const ModalContent = styled.div`
   text-align: center;
   gap: 12px;
 
+  .copy-button {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 8px;
+    margin-left: 8px;
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   div {
     margin-top: 24px;
     width: 100%;

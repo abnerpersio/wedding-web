@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Button } from '~/components/button';
+import { CopyIcon } from '~/components/icons/copy';
 import { GoogleMapsIcon } from '~/components/icons/google-maps';
 import { HeartIcon } from '~/components/icons/heart';
 import { WazeIcon } from '~/components/icons/waze';
-import { ImageDecoration } from '~/components/image-decoration';
 import { Loader } from '~/components/loader';
 import { Modal } from '~/components/modal';
 import { Page } from '~/components/page';
@@ -14,6 +15,8 @@ import { LINKS } from '~/constants/links';
 import { useInvite } from '~/hooks/useInvite';
 
 import { Content, ModalContent } from './styles';
+
+const LOCATION_LABEL = 'Av. Lindório Rocha, 1700 - Chacaras Santa Martha, Várzea Paulista - SP';
 
 export function Invite() {
   const { id } = useParams();
@@ -31,6 +34,13 @@ export function Invite() {
     window.open(LINKS.WEDDING_GIFT_LIST, '_blank');
   };
 
+  const handleCopyAddress = () => {
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(LOCATION_LABEL);
+      toast.success('Endereço copiado!');
+    }
+  };
+
   if (isLoading) {
     return <Loader isLoading />;
   }
@@ -45,11 +55,16 @@ export function Invite() {
   }
 
   return (
-    <Page>
+    <Page backgroundVariant="photo">
       <Modal isOpen={openLocationModal} onClose={handleCloseLocationModal} modalId="location-modal">
         <ModalContent>
           <p>Salão Paraíso Jundiai - SP</p>
-          <p>Endereço: Av. Lindório Rocha, 1700 - Chacaras Santa Martha, Várzea Paulista - SP</p>
+          <p>
+            Endereço: {LOCATION_LABEL}
+            <button className="copy-button" type="button" onClick={handleCopyAddress}>
+              <CopyIcon />
+            </button>
+          </p>
 
           <div>
             <button onClick={() => handleOpenLocation('google')} type="button">
@@ -62,7 +77,7 @@ export function Invite() {
         </ModalContent>
       </Modal>
 
-      <ImageDecoration opacity={0.2} />
+      {/* <ImageDecoration opacity={0.2} /> */}
 
       <Content>
         <Title text="Abner & Mayara" withAnimation />
