@@ -58,7 +58,11 @@ export const Content = styled.main`
     justify-content: space-between;
     align-items: center;
     display: flex;
-    margin: 8px 0px;
+    margin: 20px 0px;
+
+    p span {
+      margin-left: 4px;
+    }
   }
 
   div.form-actions {
