@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Button } from '~/components/button';
 import { GoBackIcon } from '~/components/icons/go-back';
@@ -24,6 +24,7 @@ export function InviteConfirm() {
   const [comments, setComments] = useState<string>('');
   const [mode, setMode] = useState<'update' | 'info'>('update');
   const { isLoading, isError, invite, refetch: refetchInviteQuery } = useInvite(id);
+  const navigate = useNavigate();
 
   const handleOpenInfoModal = () => setInfoModalOpen(true);
   const handleCloseInfoModal = () => setInfoModalOpen(false);
@@ -65,6 +66,7 @@ export function InviteConfirm() {
       setIsConfirming(false);
       toast.success('Convite confirmado!');
       refetchInviteQuery();
+      navigate(`/i/${id}`);
     } catch {
       toast.error('Ocorreu um erro ao atualizar. Tente novamente');
     } finally {
