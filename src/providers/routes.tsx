@@ -9,16 +9,17 @@ const router = createBrowserRouter([
     element: <h2>Everything is OK!</h2>,
   },
   {
+    path: '/i/:id',
+    children: [
+      { index: true, element: <Invite /> },
+      { path: 'confirm', element: <InviteConfirm /> },
+    ],
+  },
+  {
     path: '/invite/:id',
     children: [
-      {
-        index: true,
-        element: <Invite />,
-      },
-      {
-        path: 'confirm',
-        element: <InviteConfirm />,
-      },
+      { index: true, element: <Invite /> },
+      { path: 'confirm', element: <InviteConfirm /> },
     ],
   },
   {
