@@ -18,7 +18,6 @@ export function InviteConfirm() {
   const { id } = useParams();
   const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
   const [refuseModalOpen, setRefuseModalOpen] = useState<boolean>(false);
-  const [companionsModalOpen, setCompanionsModalOpen] = useState<boolean>(false);
   const [isRefusing, setIsRefusing] = useState<boolean>(false);
   const [isConfirming, setIsConfirming] = useState<boolean>(false);
   const [comments, setComments] = useState<string>('');
@@ -31,9 +30,6 @@ export function InviteConfirm() {
 
   const handleOpenRefuseModal = () => setRefuseModalOpen(true);
   const handleCloseRefuseModal = () => setRefuseModalOpen(false);
-
-  const handleOpenCompanionsModal = () => setCompanionsModalOpen(true);
-  const handleCloseCompanionsModal = () => setCompanionsModalOpen(false);
 
   const handleRefuseInvite = useCallback(async () => {
     if (!id || !invite) return;
@@ -161,21 +157,6 @@ export function InviteConfirm() {
         </ModalContent>
       </Modal>
 
-      <Modal
-        modalId="invite-companions-info"
-        isOpen={companionsModalOpen}
-        onClose={handleCloseCompanionsModal}
-      >
-        <ModalContent gap={16}>
-          <h4>Número de acompanhantes</h4>
-          <p>Esse é o número de pessoas do seu convite, sem contar com você.</p>
-          <p>Crianças de até 12 anos não contam como acompanhantes.</p>
-          <Button type="button" onClick={handleCloseCompanionsModal}>
-            Ok
-          </Button>
-        </ModalContent>
-      </Modal>
-
       <Content>
         <h2>
           {guest.name}
@@ -190,13 +171,15 @@ export function InviteConfirm() {
         </div>
 
         <div className="info-group">
-          <p>
-            Número de acompanhantes{' '}
-            <span onClick={handleOpenCompanionsModal}>
-              <InfoIcon />
-            </span>
+          <div>
+            <p>Número de acompanhantes </p>
+            <p>{invite.companions}</p>
+          </div>
+
+          <p className="aditional-info">
+            Esse é o número de pessoas do seu convite, sem contar com você. Crianças de até 12 anos
+            não contam como acompanhantes.
           </p>
-          <p>{invite.companions}</p>
         </div>
 
         <TextArea

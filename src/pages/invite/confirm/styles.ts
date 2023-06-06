@@ -55,13 +55,25 @@ export const Content = styled.main`
 
   div.info-group {
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
+    margin: 30px 0px;
     display: flex;
-    margin: 20px 0px;
+    flex-direction: column;
+    gap: 12px;
 
-    p span {
-      margin-left: 4px;
+    p.aditional-info {
+      font-size: 12px;
+      color: ${({ theme }) => theme.colors.black};
+      opacity: 0.9;
+    }
+
+    & > div {
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+
+      p span {
+        margin-left: 4px;
+      }
     }
   }
 
