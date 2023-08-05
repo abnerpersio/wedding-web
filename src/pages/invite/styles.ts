@@ -105,7 +105,7 @@ export const Content = styled.main`
   }
 
   a {
-    margin: 8px 0px;
+    margin: 16px 0px;
     color: ${({ theme }) => theme.colors.main[500]};
     font-size: 0.95em;
     transition: all 0.3s;
