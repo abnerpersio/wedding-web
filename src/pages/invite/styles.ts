@@ -105,7 +105,7 @@ export const Content = styled.main`
   }
 
   a {
-    margin: 16px 0px;
+    margin: 8px 0px;
     color: ${({ theme }) => theme.colors.main[500]};
     font-size: 0.95em;
     transition: all 0.3s;
@@ -122,7 +122,7 @@ export const Content = styled.main`
   }
 `;
 
-export const ModalContent = styled.div`
+export const LocationModalContent = styled.div`
   padding: 12px 4px;
   display: flex;
   flex-direction: column;
@@ -170,6 +170,34 @@ export const ModalContent = styled.div`
         width: 100%;
         height: 100%;
       }
+    }
+  }
+`;
+
+export const PixModalContent = styled.div`
+  padding: 12px 4px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 24px;
+
+  div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    & > button {
+      outline: none;
+      padding: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 200px;
     }
   }
 `;
